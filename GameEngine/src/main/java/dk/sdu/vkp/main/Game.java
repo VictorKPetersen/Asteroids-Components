@@ -1,7 +1,11 @@
 package dk.sdu.vkp.main;
 
 import dk.sdu.vkp.common.data.GameData;
+import dk.sdu.vkp.common.data.GameEntities;
 import dk.sdu.vkp.common.data.GameKeys;
+import dk.sdu.vkp.common.services.DrawingService;
+import dk.sdu.vkp.common.services.PluginStarterService;
+import dk.sdu.vkp.common.services.ProcessingService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -14,12 +18,17 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.ServiceLoader;
+
 public class Game extends Application {
     private final static int WINDOW_WIDTH = 1920;
     private final static int WINDOW_HEIGHT = 1080;
     @Override
     public void start(final Stage stage) {
-        GameData gameData = new GameData();
+        GameData gameData = new GameData(
+                new GameKeys(),
+                new GameEntities()
+        );
         setupOptions(gameData, stage);
 
         Pane pane = new Pane();
@@ -74,6 +83,7 @@ public class Game extends Application {
      */
     private void startGameLoop(final GameData gameData,
                                final GraphicsContext graphicsContext) {
+        startPluginServices(gameData);
         Timeline gameLoop = new Timeline();
         // Runs forever
         gameLoop.setCycleCount(Timeline.INDEFINITE);
@@ -94,12 +104,37 @@ public class Game extends Application {
     }
 
     /**
+     * Starts all the plugin services.
+     * Loads the services using the {@link ServiceLoader}.
+     * @param gameData  The {@link GameData} to act upon.
+     */
+    private void startPluginServices(final GameData gameData) {
+        for (PluginStarterService pluginStarterService
+                : ServiceLoader.load(PluginStarterService.class)) {
+            pluginStarterService.start(gameData);
+        }
+    }
+
+    /**
      * Updates the game states, is run before drawing occurs.
      * @param gameData The {@link GameData} used as common data point.
      */
     private void update(final GameData gameData) {
+        callProcessingServices(gameData);
+
         // Flush the justPressedKeys
         gameData.getKeys().clearJustPressedKeys();
+    }
+
+    /**
+     * Calls all the processing services.
+     * @param gameData  The {@link GameData} which contains entity information.
+     */
+    private void callProcessingServices(final GameData gameData) {
+        for (ProcessingService processingService
+                : ServiceLoader.load(ProcessingService.class)) {
+            processingService.process(gameData);
+        }
     }
 
     /**
@@ -112,5 +147,19 @@ public class Game extends Application {
         // Clears the canvas.
         graphicsContext.clearRect(0, 0,
                 gameData.getWindowWidth() , gameData.getWindowWidth());
+        callDrawingServices(gameData, graphicsContext);
+    }
+
+    /**
+     * Calls all the processing services.
+     * @param graphicsContext The {@link GraphicsContext}
+     *                       which is used for rendering.
+     */
+    private void callDrawingServices(final GameData gameData,
+                                     final GraphicsContext graphicsContext) {
+        for (DrawingService drawingService
+                : ServiceLoader.load(DrawingService.class)) {
+            drawingService.draw(graphicsContext, gameData);
+        }
     }
 }

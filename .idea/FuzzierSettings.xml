@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.mituuz.fuzzier.FuzzierSettings">
+    <option name="modules">
+      <map>
+        <entry key="Asteroids-Components" value="$PROJECT_DIR$" />
+        <entry key="Common" value="$PROJECT_DIR$" />
+        <entry key="GameEngine" value="$PROJECT_DIR$" />
+        <entry key="Player" value="$PROJECT_DIR$" />
+      </map>
+    </option>
+  </component>
+</project>
