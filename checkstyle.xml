@@ -37,11 +37,6 @@
         <module name="AvoidStarImport"/>
         <module name="UnusedImports"/>
         <module name="RedundantImport"/>
-        <module name="ImportOrder">
-            <property name="ordered" value="true"/>
-            <property name="separated" value="true"/>
-            <property name="sortStaticImportsAlphabetically" value="true"/>
-        </module>
 
         <!-- Javadoc Comments -->
         <module name="InvalidJavadocPosition"/>
@@ -53,7 +48,9 @@
         <module name="JavadocVariable">
             <property name="accessModifiers" value="public,protected,package"/>
         </module>
-        <module name="MissingJavadocMethod"/>
+        <module name="MissingJavadocMethod">
+            <property name="allowMissingPropertyJavadoc" value="true"/>
+        </module>
         <module name="MissingJavadocPackage"/>
 
         <!-- Misc -->

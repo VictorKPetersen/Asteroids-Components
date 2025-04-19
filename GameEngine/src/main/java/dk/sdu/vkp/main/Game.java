@@ -1,22 +1,116 @@
 package dk.sdu.vkp.main;
 
+import dk.sdu.vkp.common.data.GameData;
+import dk.sdu.vkp.common.data.GameKeys;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Game extends Application {
+    private final static int WINDOW_WIDTH = 1920;
+    private final static int WINDOW_HEIGHT = 1080;
     @Override
     public void start(final Stage stage) {
+        GameData gameData = new GameData();
+        setupOptions(gameData, stage);
+
         Pane pane = new Pane();
         Scene scene = new Scene(pane);
-        Canvas canvas = new Canvas(1920, 1080);
+        Canvas canvas = new Canvas(
+                gameData.getWindowWidth(), gameData.getWindowHeight());
         pane.getChildren().add(canvas);
+        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
 
-        stage.setTitle("Asteroids");
         stage.setScene(scene);
 
+        setupKeyHandlers(scene, gameData.getKeys());
+        startGameLoop(gameData, graphicsContext);
         stage.show();
+    }
+
+    /**
+     * Sets up the game options.
+     * @param gameData  Instance to store options in.
+     * @param stage Instance to set title of game on.
+     */
+    private void setupOptions(final GameData gameData, final Stage stage) {
+        stage.setTitle("Asteroids");
+
+        gameData.setWindowWidth(WINDOW_WIDTH);
+        gameData.setWindowHeight(WINDOW_HEIGHT);
+    }
+
+    /**
+     * Sets up key handlers for the game.
+     * @param scene The {@link Scene} where Key events should be registered.
+     * @param gameKeys The {@link GameKeys} which handles key events.
+     */
+    private void setupKeyHandlers(final Scene scene, final GameKeys gameKeys) {
+        scene.setOnKeyPressed(event -> {
+            gameKeys.addActiveKey(event.getCode());
+        });
+        scene.setOnKeyReleased(event -> {
+            gameKeys.removeActiveKey(event.getCode());
+        });
+    }
+
+    /**
+     * Starts the main game loop which updates
+     * and renders the game at a fixed frame rate.
+     * The game loop uses a {@link Timeline}
+     * for continuous execution and runs indefinitely.
+     *
+     * @param graphicsContext The {@link GraphicsContext}
+     *                       used for rendering game objects.
+     * @param gameData The {@link GameData} used as common data point.
+     */
+    private void startGameLoop(final GameData gameData,
+                               final GraphicsContext graphicsContext) {
+        Timeline gameLoop = new Timeline();
+        // Runs forever
+        gameLoop.setCycleCount(Timeline.INDEFINITE);
+
+        KeyFrame keyFrame = new KeyFrame(
+                Duration.millis(1000 / 60f),
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(final ActionEvent actionEvent) {
+                        update(gameData);
+                        draw(gameData, graphicsContext);
+                    }
+                }
+        );
+
+        gameLoop.getKeyFrames().add(keyFrame);
+        gameLoop.play();
+    }
+
+    /**
+     * Updates the game states, is run before drawing occurs.
+     * @param gameData The {@link GameData} used as common data point.
+     */
+    private void update(final GameData gameData) {
+        // Flush the justPressedKeys
+        gameData.getKeys().clearJustPressedKeys();
+    }
+
+    /**
+     * Draws, the game states, is run after updating occurs.
+     * @param graphicsContext The {@link GraphicsContext} used for rendering.
+     * @param gameData The {@link GameData} used as common data point.
+     */
+    private void draw(final GameData gameData,
+                      final GraphicsContext graphicsContext) {
+        // Clears the canvas.
+        graphicsContext.clearRect(0, 0,
+                gameData.getWindowWidth() , gameData.getWindowWidth());
     }
 }

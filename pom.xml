@@ -9,6 +9,7 @@
 
   <modules>
     <module>GameEngine</module>
+    <module>Common</module>
   </modules>
 
   <properties>
