@@ -154,6 +154,7 @@ public class Game extends Application {
      * Calls all the processing services.
      * @param graphicsContext The {@link GraphicsContext}
      *                       which is used for rendering.
+     * @param gameData The {@link GameData} used as common data point.
      */
     private void callDrawingServices(final GameData gameData,
                                      final GraphicsContext graphicsContext) {

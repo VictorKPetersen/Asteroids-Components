@@ -12,7 +12,7 @@ public class GameData {
      * @param keys The {@link GameKeys} to inject.
      * @param entities The {@link GameEntities} to inject.
      */
-    public GameData(GameKeys keys, GameEntities entities) {
+    public GameData(final GameKeys keys, final GameEntities entities) {
         this.keys = keys;
         this.entities = entities;
     }
