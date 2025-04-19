@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>dk.sdu.vkp</groupId>
+        <artifactId>Asteroids-Components</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>GameEngine</artifactId>
+    <packaging>jar</packaging>
+    <name>GameEngine</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Maven Exec Plugin for easier execution of the program.-->
+            <!-- Does not specify a class path as we do not use anything that cannot run on the module path. -->
+            <!-- Also does not use add-modules as we include necessary dependencies on the module-path. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>java</executable>
+                    <workingDirectory>../</workingDirectory>
+                    <longModulepath>false</longModulepath>
+                    <arguments>
+                        <argument>--module-path</argument>
+                        <argument>mods-mvn</argument>
+                        <argument>--module</argument>
+                        <argument>GameEngine/dk.sdu.vkp.main.Launcher</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+
+            <!-- Copies the included artifact Ids to the mods-mvn folder. -->
+            <!-- Used to put external dependencies onto the module-path-->
+            <!-- Is run from child pom so we may avoid running it unnecessarily many times -->
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                <execution>
+                    <id>copy-dependencies</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>copy-dependencies</goal>
+                    </goals>
+                    <configuration>
+                        <includeArtifactIds>javafx-controls,javafx-graphics,javafx-base</includeArtifactIds>
+                        <outputDirectory>../mods-mvn</outputDirectory>
+                    </configuration>
+                </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
