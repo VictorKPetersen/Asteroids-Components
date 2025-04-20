@@ -1,10 +1,12 @@
-package dk.sdu.vkp.common.components;
+package dk.sdu.vkp.common.components.impl;
 
+import dk.sdu.vkp.common.components.interfaces.DrawingComponent;
+import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.data.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class TriangleDrawingComponent implements DrawingComponent{
+public class TriangleDrawingComponent implements DrawingComponent {
     private final Color color;
 
     /**

@@ -1,6 +1,6 @@
 package dk.sdu.vkp.player;
 
-import dk.sdu.vkp.common.components.PositionComponent;
+import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.data.GameData;
 import dk.sdu.vkp.common.services.ProcessingService;
 

@@ -1,4 +1,4 @@
-package dk.sdu.vkp.common.components;
+package dk.sdu.vkp.common.components.interfaces;
 
 import dk.sdu.vkp.common.data.Entity;
 import javafx.scene.canvas.GraphicsContext;

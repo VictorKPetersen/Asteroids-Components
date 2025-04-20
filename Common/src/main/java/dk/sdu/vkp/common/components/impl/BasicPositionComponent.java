@@ -1,6 +1,8 @@
-package dk.sdu.vkp.common.components;
+package dk.sdu.vkp.common.components.impl;
 
-public class PositionComponent {
+import dk.sdu.vkp.common.components.interfaces.PositionComponent;
+
+public class BasicPositionComponent implements PositionComponent {
     private double x;
     private double y;
     private double rotation;
@@ -13,7 +15,7 @@ public class PositionComponent {
      * @param y The y-coordinate of the position in the game world.
      * @param rotation The rotation in degrees, representing the orientation.
      */
-    public PositionComponent(final double x, final double y, final double rotation) {
+    public BasicPositionComponent(final double x, final double y, final double rotation) {
         this.x = x;
         this.y = y;
         this.rotation = rotation;

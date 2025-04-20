@@ -9,7 +9,7 @@ public class PlayerDrawingService implements DrawingService {
     public void draw(final GraphicsContext graphicsContext,
                      final GameData gameData) {
         for (Player player : gameData.getEntities().getEntities(Player.class)) {
-            player.render(graphicsContext);
+            player.getDrawingComponent().render(graphicsContext, player);
         }
     }
 }

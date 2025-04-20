@@ -1,4 +1,4 @@
 /**
- * Components or Component Implementation specefic to the player.
+ * Components or Component Implementation specific to the player.
  */
 package dk.sdu.vkp.player.components;
