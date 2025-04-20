@@ -7,4 +7,5 @@ module GameEngine {
     uses dk.sdu.vkp.common.services.ProcessingService;
     uses dk.sdu.vkp.common.services.PluginStarterService;
     uses dk.sdu.vkp.common.services.DrawingService;
+    uses dk.sdu.vkp.common.services.CollisionProcessingService;
 }

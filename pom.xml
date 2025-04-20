@@ -15,6 +15,7 @@
     <module>Bullet</module>
       <module>CommonEnemy</module>
     <module>BulletEnemyShip</module>
+      <module>CollisionEngine</module>
   </modules>
 
   <properties>

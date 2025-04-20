@@ -1,9 +1,11 @@
 package dk.sdu.vkp.bulletship;
 
 import dk.sdu.vkp.common.components.impl.BasicPositionComponent;
+import dk.sdu.vkp.common.components.impl.CircularHitboxComponent;
 import dk.sdu.vkp.common.components.impl.LinearMovementComponent;
 import dk.sdu.vkp.common.components.impl.TriangleDrawingComponent;
 import dk.sdu.vkp.common.components.interfaces.DrawingComponent;
+import dk.sdu.vkp.common.components.interfaces.HitboxComponent;
 import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.data.GameData;
@@ -25,14 +27,16 @@ public class BulletShipPluginStarterService implements PluginStarterService {
     }
 
     private BulletShip createBulletShiop(double spawnX, double spawnY, double spawnRotation) {
+        double shipSize = 25;
         PositionComponent position = new BasicPositionComponent(spawnX, spawnY, spawnRotation);
         DrawingComponent drawingComponent = new TriangleDrawingComponent(Color.RED);
         MovementComponent movement = new LinearMovementComponent(7.5, 2.5);
         AIControllerComponent ai = new BasicAIControllerComponent();
         WeaponComponent weapon = findFirstWeapon();
+        HitboxComponent hitbox = new CircularHitboxComponent(shipSize);
 
         return new BulletShip(
-                25, position, drawingComponent, movement, ai, weapon
+                shipSize, position, drawingComponent, movement, ai, weapon, hitbox
         );
     }
 

@@ -2,8 +2,10 @@ package dk.sdu.vkp.bullet;
 
 import dk.sdu.vkp.common.components.impl.BasicPositionComponent;
 import dk.sdu.vkp.common.components.impl.CircleDrawingComponent;
+import dk.sdu.vkp.common.components.impl.CircularHitboxComponent;
 import dk.sdu.vkp.common.components.impl.LinearMovementComponent;
 import dk.sdu.vkp.common.components.interfaces.DrawingComponent;
+import dk.sdu.vkp.common.components.interfaces.HitboxComponent;
 import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.data.GameData;
@@ -40,9 +42,10 @@ public class BulletWeaponComponent implements WeaponComponent {
         PositionComponent positionComponent = new BasicPositionComponent(spawnPosition.getX(), spawnPosition.getY(), spawnPosition.getRotation());
         DrawingComponent drawingComponent = new CircleDrawingComponent(Color.MAROON);
         MovementComponent movementComponent = new LinearMovementComponent(bulletSpeed, bulletRotationSpeed);
+        HitboxComponent hitboxComponent = new CircularHitboxComponent(bulletRadius);
 
         return new Bullet(
-                bulletRadius, positionComponent, drawingComponent, movementComponent
+                bulletRadius, positionComponent, drawingComponent, movementComponent, hitboxComponent
         );
     }
 }

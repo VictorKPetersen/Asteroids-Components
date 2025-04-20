@@ -1,6 +1,7 @@
 package dk.sdu.vkp.player;
 
 import dk.sdu.vkp.common.components.interfaces.DrawingComponent;
+import dk.sdu.vkp.common.components.interfaces.HitboxComponent;
 import dk.sdu.vkp.common.components.interfaces.InputComponent;
 import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
@@ -20,14 +21,17 @@ public class Player extends Entity {
      * @param playerInputComponent The PlayerInputComponent managing the player's input and movement logic.
      * @param movementComponent The MovementComponent managing the player's movement logic.
      * @param weaponComponent The WeaponComponent used for attacking.
+     *
+     * @param hitboxComponent The {@link HitboxComponent} used for collision detection.
      */
     public Player(final double size,
                   final PositionComponent position,
                   final DrawingComponent drawingComponent,
                   final InputComponent playerInputComponent,
                   final MovementComponent movementComponent,
-                  WeaponComponent weaponComponent) {
-        super(size, position, drawingComponent);
+                  final WeaponComponent weaponComponent,
+                  final HitboxComponent hitboxComponent) {
+        super(size, position, drawingComponent, hitboxComponent);
         this.playerInputComponent = playerInputComponent;
         this.movementComponent = movementComponent;
         this.weaponComponent = weaponComponent;

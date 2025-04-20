@@ -1,7 +1,7 @@
 package dk.sdu.vkp.common.data;
 
 import dk.sdu.vkp.common.components.interfaces.DrawingComponent;
-import dk.sdu.vkp.common.components.impl.BasicPositionComponent;
+import dk.sdu.vkp.common.components.interfaces.HitboxComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 
 import java.util.UUID;
@@ -11,6 +11,7 @@ public class Entity {
     private final double size;
     private final PositionComponent position;
     private final DrawingComponent drawingComponent;
+    private final HitboxComponent hitbox;
 
     /**
      * Constructs a new Entity instance with
@@ -20,12 +21,14 @@ public class Entity {
      *                that defines the position and rotation of the entity.
      * @param drawingComponent The {@link DrawingComponent}
      *                        responsible for rendering the entity.
+     * @param hitbox The {@link HitboxComponent} used for collision detection.
      */
     public Entity(double size, final PositionComponent position,
-                  final DrawingComponent drawingComponent) {
+                  final DrawingComponent drawingComponent, final HitboxComponent hitbox) {
         this.size = size;
         this.position = position;
         this.drawingComponent = drawingComponent;
+        this.hitbox = hitbox;
     }
 
     public UUID getId() {
@@ -40,7 +43,12 @@ public class Entity {
         return drawingComponent;
     }
 
+    public HitboxComponent getHitbox() {
+        return hitbox;
+    }
+
     public double getSize() {
         return size;
     }
+
 }

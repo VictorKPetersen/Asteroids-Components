@@ -1,6 +1,7 @@
 package dk.sdu.vkp.common.enemy;
 
 import dk.sdu.vkp.common.components.interfaces.DrawingComponent;
+import dk.sdu.vkp.common.components.interfaces.HitboxComponent;
 import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.data.Entity;
@@ -24,12 +25,15 @@ public abstract class Enemy extends Entity {
      *                          that can move the entity.
      * @param aiControllerComponent The {@link AIControllerComponent} which can calculate the entity's next movement.'
      * @param weaponComponent The{@link WeaponComponent} which allows the entity to attack.
+     *
+     * @param hitbox The {@link HitboxComponent} used for collision detection.
      */
 
     public Enemy(final double size, final PositionComponent position,
                  final DrawingComponent drawingComponent, final MovementComponent movementComponent,
-                 final AIControllerComponent aiControllerComponent, final WeaponComponent weaponComponent) {
-        super(size, position, drawingComponent);
+                 final AIControllerComponent aiControllerComponent, final WeaponComponent weaponComponent,
+                 final HitboxComponent hitbox) {
+        super(size, position, drawingComponent, hitbox);
         this.movementComponent = movementComponent;
         this.aiControllerComponent = aiControllerComponent;
         this.weaponComponent = weaponComponent;

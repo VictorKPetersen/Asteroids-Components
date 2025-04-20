@@ -1,6 +1,7 @@
 package dk.sdu.vkp.bulletship;
 
 import dk.sdu.vkp.common.components.interfaces.DrawingComponent;
+import dk.sdu.vkp.common.components.interfaces.HitboxComponent;
 import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.enemy.Enemy;
@@ -21,10 +22,13 @@ public class BulletShip extends Enemy {
      *                          that can move the entity.
      * @param ai The {@link AIControllerComponent} which can calculate the entity's next movement.'
      * @param weaponComponent   The{@link WeaponComponent} which allows the entity to attack.
+     *
+     * @param hitboxComponent The {@link HitboxComponent} used for collision detection.
      */
     public BulletShip(final double size, final PositionComponent position,
                       final DrawingComponent drawingComponent, final MovementComponent movementComponent,
-                      final AIControllerComponent ai, final WeaponComponent weaponComponent) {
-        super(size, position, drawingComponent, movementComponent, ai, weaponComponent);
+                      final AIControllerComponent ai, final WeaponComponent weaponComponent,
+                      final HitboxComponent hitboxComponent) {
+        super(size, position, drawingComponent, movementComponent, ai, weaponComponent, hitboxComponent);
     }
 }

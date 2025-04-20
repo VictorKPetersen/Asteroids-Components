@@ -3,6 +3,7 @@ package dk.sdu.vkp.main;
 import dk.sdu.vkp.common.data.GameData;
 import dk.sdu.vkp.common.data.GameEntities;
 import dk.sdu.vkp.common.data.GameKeys;
+import dk.sdu.vkp.common.services.CollisionProcessingService;
 import dk.sdu.vkp.common.services.DrawingService;
 import dk.sdu.vkp.common.services.PluginStarterService;
 import dk.sdu.vkp.common.services.ProcessingService;
@@ -134,6 +135,11 @@ public class Game extends Application {
         for (ProcessingService processingService
                 : ServiceLoader.load(ProcessingService.class)) {
             processingService.process(gameData);
+        }
+
+        for (CollisionProcessingService collisionService
+                : ServiceLoader.load(CollisionProcessingService.class)) {
+            collisionService.processCollisions(gameData);
         }
     }
 

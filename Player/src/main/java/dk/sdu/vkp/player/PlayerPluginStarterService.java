@@ -1,9 +1,11 @@
 package dk.sdu.vkp.player;
 
+import dk.sdu.vkp.common.components.impl.CircularHitboxComponent;
 import dk.sdu.vkp.common.components.impl.LinearMovementComponent;
 import dk.sdu.vkp.common.components.impl.BasicPositionComponent;
 import dk.sdu.vkp.common.components.impl.TriangleDrawingComponent;
 import dk.sdu.vkp.common.components.interfaces.DrawingComponent;
+import dk.sdu.vkp.common.components.interfaces.HitboxComponent;
 import dk.sdu.vkp.common.components.interfaces.InputComponent;
 import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
@@ -40,11 +42,12 @@ public class PlayerPluginStarterService implements PluginStarterService {
                 new LinearMovementComponent(playerSpeed, playerRotationSpeed);
         InputComponent playerInputComponent =
                 new PlayerInputComponent(playerMovementComponent, weaponComponent);
+        HitboxComponent hitbox = new CircularHitboxComponent(playerSize);
 
 
         return new Player(
                 playerSize, playerPosition, playerDrawingComponent,
-                playerInputComponent, playerMovementComponent, weaponComponent
+                playerInputComponent, playerMovementComponent, weaponComponent, hitbox
         );
 
     }
