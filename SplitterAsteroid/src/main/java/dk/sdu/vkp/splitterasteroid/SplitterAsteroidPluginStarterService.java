@@ -13,21 +13,24 @@ import dk.sdu.vkp.common.services.PluginStarterService;
 
 import java.util.Random;
 
+
 public class SplitterAsteroidPluginStarterService implements PluginStarterService {
-    private final static Random random = new Random();
+    private final Random random = new Random();
     @Override
     public void start(GameData gameData) {
-        SplitterAsteroid splitter = createSplitter();
-        System.out.println(splitter.getSize());
-        gameData.getEntities().addEntity(splitter);
+        gameData.getEntities().addEntity(createSplitter(gameData));
     }
 
-    private SplitterAsteroid createSplitter() {
+    /**
+     * Creates a new SplitterAsteroid instance with random values.
+     * @return A new SplitterAsteroid instance with random values.
+     */
+    public SplitterAsteroid createSplitter(GameData gameData) {
         double asteroidRadius = random.nextDouble(30, 50);
         int asteroidLayers = random.nextInt(1, 3) + 1;
-        double spawnX = 435;
-        double spawnY = 250;
-        double spawnRotation = 67;
+        double spawnX = random.nextDouble(gameData.getWindowWidth());
+        double spawnY = random.nextDouble(gameData.getWindowHeight());
+        double spawnRotation = random.nextDouble(360);
         PositionComponent pos = new BasicPositionComponent(spawnX, spawnY, spawnRotation);
         DrawingComponent draw = new CircleDrawingComponent(SplitterAsteroid.getColor());
         HitboxComponent hitbox = new CircularHitboxComponent(asteroidRadius * asteroidLayers);
@@ -37,4 +40,5 @@ public class SplitterAsteroidPluginStarterService implements PluginStarterServic
                 pos, draw, hitbox, movement, asteroidRadius, asteroidLayers
         );
     }
+
 }

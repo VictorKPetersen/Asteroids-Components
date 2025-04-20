@@ -8,7 +8,7 @@ public class SplitterAsteroidProcessingService implements ProcessingService {
     @Override
     public void process(GameData gameData) {
         for (SplitterAsteroid asteroid : gameData.getEntities().getEntities(SplitterAsteroid.class)) {
-           asteroid.getMovementComponent().moveForward(asteroid.getPosition());
+            asteroid.getMovementComponent().moveForward(asteroid.getPosition());
             checkBounds(gameData, asteroid);
         }
     }
