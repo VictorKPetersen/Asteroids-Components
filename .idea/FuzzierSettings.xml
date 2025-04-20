@@ -4,7 +4,9 @@
     <option name="modules">
       <map>
         <entry key="Asteroids-Components" value="$PROJECT_DIR$" />
+        <entry key="Bullet" value="$PROJECT_DIR$" />
         <entry key="Common" value="$PROJECT_DIR$" />
+        <entry key="CommonWeapon" value="$PROJECT_DIR$" />
         <entry key="GameEngine" value="$PROJECT_DIR$" />
         <entry key="Player" value="$PROJECT_DIR$" />
       </map>

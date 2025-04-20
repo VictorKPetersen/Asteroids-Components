@@ -21,22 +21,19 @@ public class LinearMovementComponent implements MovementComponent {
     }
 
     @Override
-    public void moveForward(final Entity entity) {
-        PositionComponent position = entity.getPosition();
+    public void moveForward(final PositionComponent position) {
         double radians = Math.toRadians(position.getRotation());
         position.setX(position.getX() + Math.cos(radians) * speed);
         position.setY(position.getY() + Math.sin(radians) * speed);
     }
 
     @Override
-    public void rotateLeft(final Entity entity) {
-        PositionComponent position = entity.getPosition();
+    public void rotateLeft(final PositionComponent position) {
         position.setRotation(position.getRotation() - rotationSpeed);
     }
 
     @Override
-    public void rotateRight(final Entity entity) {
-        PositionComponent position = entity.getPosition();
+    public void rotateRight(final PositionComponent position) {
         position.setRotation(position.getRotation() + rotationSpeed);
     }
 }

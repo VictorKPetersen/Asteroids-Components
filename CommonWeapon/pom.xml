@@ -7,24 +7,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Player</artifactId>
+    <artifactId>CommonWeapon</artifactId>
     <packaging>jar</packaging>
-    <name>Player</name>
-
+    <name>CommonWeapon</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-graphics</artifactId>
-        </dependency>
-        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>Common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>CommonWeapon</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

@@ -1,27 +1,28 @@
 package dk.sdu.vkp.common.components.interfaces;
 
-import dk.sdu.vkp.common.data.Entity;
-
 public interface MovementComponent {
 
     /**
-     * Moves the entity forward in the direction it is facing.
+     * Updates the position component to move forward
+     * based on the current direction.
      *
-     * @param entity The entity to move forward
+     * @param position The position component to update
      */
-    void moveForward(Entity entity);
+    void moveForward(PositionComponent position);
 
     /**
-     * Rotates the entity counter-clockwise.
+     * Updates the position component to rotate
+     * in a counter-clockwise direction.
      *
-     * @param entity The entity to rotate left
+     * @param position The position component to update
      */
-    void rotateLeft(Entity entity);
+    void rotateLeft(PositionComponent position);
 
     /**
-     * Rotates the entity clockwise.
+     * Updates the position component to rotate
+     * in a clockwise direction.
      *
-     * @param entity The entity to rotate right
+     * @param position The position component to update
      */
-    void rotateRight(Entity entity);
+    void rotateRight(PositionComponent position);
 }

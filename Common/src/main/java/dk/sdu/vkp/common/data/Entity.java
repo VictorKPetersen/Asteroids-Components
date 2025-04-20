@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public class Entity {
     private final UUID id = UUID.randomUUID();
+    private final double size;
     private final PositionComponent position;
     private final DrawingComponent drawingComponent;
 
@@ -20,8 +21,9 @@ public class Entity {
      * @param drawingComponent The {@link DrawingComponent}
      *                        responsible for rendering the entity.
      */
-    public Entity(final PositionComponent position,
+    public Entity(double size, final PositionComponent position,
                   final DrawingComponent drawingComponent) {
+        this.size = size;
         this.position = position;
         this.drawingComponent = drawingComponent;
     }
@@ -36,5 +38,9 @@ public class Entity {
 
     public DrawingComponent getDrawingComponent() {
         return drawingComponent;
+    }
+
+    public double getSize() {
+        return size;
     }
 }
