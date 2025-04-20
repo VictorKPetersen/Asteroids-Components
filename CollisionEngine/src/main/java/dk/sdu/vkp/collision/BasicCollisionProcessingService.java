@@ -1,6 +1,6 @@
 package dk.sdu.vkp.collision;
 
-import dk.sdu.vkp.common.components.interfaces.HitboxComponent;
+import dk.sdu.vkp.common.asteroid.Asteroid;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.data.Entity;
 import dk.sdu.vkp.common.data.GameData;
@@ -17,9 +17,13 @@ public class BasicCollisionProcessingService implements CollisionProcessingServi
                     continue;
                 }
 
+                if (entity1 instanceof Asteroid && entity2 instanceof Asteroid) {
+                    continue;
+                }
+
                 if (isColliding(entity1, entity2)) {
-                    entities.removeEntity(entity1);
-                    entities.removeEntity(entity2);
+                    entity1.getHitbox().hit(entity1, gameData);
+                    entity2.getHitbox().hit(entity2, gameData);
                 }
             }
         }

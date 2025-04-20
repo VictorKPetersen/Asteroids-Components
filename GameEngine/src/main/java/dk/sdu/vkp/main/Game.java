@@ -16,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -154,6 +156,10 @@ public class Game extends Application {
         graphicsContext.clearRect(0, 0,
                 gameData.getWindowWidth() , gameData.getWindowWidth());
         callDrawingServices(gameData, graphicsContext);
+
+        graphicsContext.setFill(Color.GOLD); // or whatever color works
+        graphicsContext.setFont(new Font("Arial", 24));
+        graphicsContext.fillText("Score: " + gameData.getGameScore(), 20, 40);
     }
 
     /**

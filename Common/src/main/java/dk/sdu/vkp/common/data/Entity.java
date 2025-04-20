@@ -31,6 +31,15 @@ public class Entity {
         this.hitbox = hitbox;
     }
 
+    /**
+     * Called whenever a {@link HitboxComponent} trigger {@code hit}.
+     * Default implementation removes the entity from the game world.
+     * @param gameData  The {@link GameData} instance containing the game world.
+     */
+    public void takeHit(final GameData gameData) {
+        gameData.getEntities().removeEntity(this);
+    }
+
     public UUID getId() {
         return id;
     }
@@ -50,5 +59,4 @@ public class Entity {
     public double getSize() {
         return size;
     }
-
 }

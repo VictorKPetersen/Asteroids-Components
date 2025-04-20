@@ -7,19 +7,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>CollisionEngine</artifactId>
+    <artifactId>CommonAsteroid</artifactId>
     <packaging>jar</packaging>
-    <name>CollisionEngine</name>
+    <name>CommonAsteroid</name>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>Common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>CommonAsteroid</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

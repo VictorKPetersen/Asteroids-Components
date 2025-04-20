@@ -6,6 +6,7 @@ import dk.sdu.vkp.common.components.interfaces.InputComponent;
 import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.data.Entity;
+import dk.sdu.vkp.common.data.GameData;
 import dk.sdu.vkp.common.weapon.WeaponComponent;
 
 public class Player extends Entity {
@@ -35,6 +36,11 @@ public class Player extends Entity {
         this.playerInputComponent = playerInputComponent;
         this.movementComponent = movementComponent;
         this.weaponComponent = weaponComponent;
+    }
+
+    @Override
+    public void takeHit(GameData gameData) {
+        gameData.getEntities().clearEntities();
     }
 
     public InputComponent getPlayerInputComponent() {

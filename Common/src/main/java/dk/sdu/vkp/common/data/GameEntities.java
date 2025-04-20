@@ -34,6 +34,13 @@ public class GameEntities {
     }
 
     /**
+     * Clears all entities from the game.
+     */
+    public void clearEntities() {
+        entities.clear();
+    }
+
+    /**
      * Retrieves a list of entities from the Game
      * that matches the specified class type.
      * @param <E>   The type of entity to retrieve, must extend {@link Entity}.

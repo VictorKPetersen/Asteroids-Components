@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/CollisionEngine/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonAsteroid/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonAsteroid/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonEnemy/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonEnemy/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/java" charset="UTF-8" />
@@ -19,6 +21,8 @@
     <file url="file://$PROJECT_DIR$/GameEngine/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SplitterAsteroid/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SplitterAsteroid/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

@@ -16,6 +16,8 @@
       <module>CommonEnemy</module>
     <module>BulletEnemyShip</module>
       <module>CollisionEngine</module>
+      <module>CommonAsteroid</module>
+    <module>SplitterAsteroid</module>
   </modules>
 
   <properties>

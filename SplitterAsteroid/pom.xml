@@ -7,9 +7,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>CollisionEngine</artifactId>
+    <artifactId>SplitterAsteroid</artifactId>
     <packaging>jar</packaging>
-    <name>CollisionEngine</name>
+    <name>SplitterAsteroid</name>
 
     <dependencies>
         <dependency>

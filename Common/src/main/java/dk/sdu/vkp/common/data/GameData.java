@@ -4,6 +4,8 @@ public class GameData {
     private int windowWidth;
     private int windowHeight;
 
+    private int gameScore;
+
     private final GameKeys keys;
     private final GameEntities entities;
 
@@ -31,6 +33,14 @@ public class GameData {
 
     public void setWindowHeight(final int windowHeight) {
         this.windowHeight = windowHeight;
+    }
+
+    public int getGameScore() {
+        return gameScore;
+    }
+
+    public void increamentGameScore() {
+        ++gameScore;
     }
 
     public GameKeys getKeys() {
