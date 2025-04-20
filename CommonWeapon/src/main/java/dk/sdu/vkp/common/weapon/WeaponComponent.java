@@ -6,4 +6,6 @@ import dk.sdu.vkp.common.data.GameData;
 
 public interface WeaponComponent {
     void fire(GameData gameData, PositionComponent spawnPosition);
+    double getOffsetX();
+    double getOffsetY();
 }

@@ -55,9 +55,8 @@ public class PlayerInputComponent implements InputComponent {
             PositionComponent pos = entity.getPosition();
             double radians = Math.toRadians(pos.getRotation());
 
-            double offset = 2 * entity.getSize();
-            double spawnX = pos.getX() + Math.cos(radians) * offset;
-            double spawnY = pos.getY() + Math.sin(radians) * offset;
+            double spawnX = pos.getX() + Math.cos(radians) * weapon.getOffsetX();
+            double spawnY = pos.getY() + Math.sin(radians) * weapon.getOffsetY();
 
             PositionComponent spawnPos = new BasicPositionComponent(spawnX, spawnY, pos.getRotation());
             weapon.fire(gameData, spawnPos);

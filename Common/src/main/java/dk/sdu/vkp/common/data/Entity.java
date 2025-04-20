@@ -16,7 +16,7 @@ public class Entity {
      * Constructs a new Entity instance with
      * the specified position and drawing components.
      *
-     * @param position The {@link BasicPositionComponent}
+     * @param position The {@link PositionComponent}
      *                that defines the position and rotation of the entity.
      * @param drawingComponent The {@link DrawingComponent}
      *                        responsible for rendering the entity.

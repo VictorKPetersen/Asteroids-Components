@@ -13,6 +13,8 @@
     <module>Player</module>
     <module>CommonWeapon</module>
     <module>Bullet</module>
+      <module>CommonEnemy</module>
+    <module>BulletEnemyShip</module>
   </modules>
 
   <properties>
