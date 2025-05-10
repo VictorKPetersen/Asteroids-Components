@@ -5,11 +5,19 @@ import dk.sdu.vkp.common.data.GameData;
 import dk.sdu.vkp.common.services.ProcessingService;
 
 public class SplitterAsteroidProcessingService implements ProcessingService {
+    private int count = 0;
     @Override
     public void process(GameData gameData) {
         for (SplitterAsteroid asteroid : gameData.getEntities().getEntities(SplitterAsteroid.class)) {
             asteroid.getMovementComponent().moveForward(asteroid.getPosition());
             checkBounds(gameData, asteroid);
+            count++;
+        }
+
+        if (count < 5) {
+           SplitterAsteroidPluginStarterService starter =
+                   new SplitterAsteroidPluginStarterService();
+           gameData.getEntities().addEntity(starter.createSplitter(gameData));
         }
     }
     

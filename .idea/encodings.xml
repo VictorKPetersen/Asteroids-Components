@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/BlueNebulaMap/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BlueNebulaMap/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Bullet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Bullet/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/BulletEnemyShip/src/main/java" charset="UTF-8" />
@@ -13,6 +15,8 @@
     <file url="file://$PROJECT_DIR$/CommonAsteroid/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonEnemy/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonEnemy/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMap/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMap/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/GameEngine/Common/src/main/java" charset="UTF-8" />
@@ -23,6 +27,8 @@
     <file url="file://$PROJECT_DIR$/Player/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SplitterAsteroid/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SplitterAsteroid/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/StarFieldMap/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/StarFieldMap/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

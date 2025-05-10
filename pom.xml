@@ -18,6 +18,9 @@
       <module>CollisionEngine</module>
       <module>CommonAsteroid</module>
     <module>SplitterAsteroid</module>
+      <module>CommonMap</module>
+    <module>BlueNebulaMap</module>
+    <module>StarFieldMap</module>
   </modules>
 
   <properties>

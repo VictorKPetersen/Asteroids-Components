@@ -3,6 +3,7 @@ package dk.sdu.vkp.main;
 import dk.sdu.vkp.common.data.GameData;
 import dk.sdu.vkp.common.data.GameEntities;
 import dk.sdu.vkp.common.data.GameKeys;
+import dk.sdu.vkp.common.map.Map;
 import dk.sdu.vkp.common.services.CollisionProcessingService;
 import dk.sdu.vkp.common.services.DrawingService;
 import dk.sdu.vkp.common.services.PluginStarterService;
@@ -21,6 +22,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.Optional;
 import java.util.ServiceLoader;
 
 public class Game extends Application {
@@ -170,9 +172,31 @@ public class Game extends Application {
      */
     private void callDrawingServices(final GameData gameData,
                                      final GraphicsContext graphicsContext) {
+        callBackgroundService(gameData, graphicsContext);
+
         for (DrawingService drawingService
                 : ServiceLoader.load(DrawingService.class)) {
             drawingService.draw(graphicsContext, gameData);
         }
+    }
+
+    /**
+     * Calls a singular {@link Map} service.
+     * If none are found, none are called.
+     * Should be called before any other drawing is done for the frame.
+     * @param gameData  The gamedata which decides the size of the canvas.
+     * @param graphicsContext The context to draw the background on.
+     */
+    private void callBackgroundService(final GameData gameData,
+                                       final GraphicsContext graphicsContext) {
+        Optional<Map> renderer = ServiceLoader.load(Map.class).findFirst();
+
+        renderer.ifPresent(map -> {
+            map.renderBg(
+                    graphicsContext,
+                    gameData.getWindowWidth(),
+                    gameData.getWindowHeight()
+            );
+        });
     }
 }

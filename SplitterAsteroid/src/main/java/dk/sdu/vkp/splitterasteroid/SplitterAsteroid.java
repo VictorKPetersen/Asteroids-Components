@@ -18,7 +18,7 @@ import java.util.Random;
 public class SplitterAsteroid extends Asteroid {
     private final double baseRadius;
     private final int layers;
-    private final static double SPEED = 12;
+    private final static double SPEED = 4;
     private final static double ROTATION_SPEED = 35;
     private final static Color COLOR = Color.YELLOWGREEN;
     /**
