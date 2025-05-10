@@ -3,10 +3,11 @@ import dk.sdu.vkp.common.services.PluginStarterService;
 import dk.sdu.vkp.common.services.ProcessingService;
 
 module Player {
-    uses dk.sdu.vkp.common.weapon.WeaponComponent;
     requires javafx.graphics;
     requires Common;
     requires CommonWeapon;
+
+    uses dk.sdu.vkp.common.weapon.WeaponComponent;
 
     provides ProcessingService with dk.sdu.vkp.player.PlayerProcessingService;
     provides PluginStarterService with dk.sdu.vkp.player.PlayerPluginStarterService;
