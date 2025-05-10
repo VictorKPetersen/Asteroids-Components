@@ -13,6 +13,8 @@ public final class Launcher {
      *            passed to the application during execution
      */
     public static void main(final String[] args) {
+        System.out.println("Application started");
         Application.launch(Game.class);
+
     }
 }

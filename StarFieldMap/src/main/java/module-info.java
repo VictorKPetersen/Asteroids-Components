@@ -1,9 +1,9 @@
 import dk.sdu.vkp.common.map.Map;
-import dk.sdu.vkp.starmap.StarFieldMap;
+import dk.sdu.vkp.map.SpaceMap;
 
 module StarFieldMap {
     requires CommonMap;
     requires javafx.graphics;
 
-    provides Map with StarFieldMap;
+    provides Map with SpaceMap;
 }

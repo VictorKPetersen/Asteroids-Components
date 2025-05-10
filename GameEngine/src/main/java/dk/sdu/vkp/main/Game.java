@@ -22,18 +22,26 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.lang.module.Configuration;
+import java.lang.module.ModuleFinder;
+import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.ServiceLoader;
+import java.util.Set;
 
 public class Game extends Application {
     private final static int WINDOW_WIDTH = 1920;
     private final static int WINDOW_HEIGHT = 1080;
+    private ModuleLayer mapLayer;
+
     @Override
     public void start(final Stage stage) {
+        mapLayer = createModuleLayerWithMap("plugins", "BlueNebulaMap");
         GameData gameData = new GameData(
                 new GameKeys(),
                 new GameEntities()
         );
+
         setupOptions(gameData, stage);
 
         Pane pane = new Pane();
@@ -47,8 +55,19 @@ public class Game extends Application {
 
         setupKeyHandlers(scene, gameData.getKeys());
         startGameLoop(gameData, graphicsContext);
+
         stage.show();
     }
+
+    private static ModuleLayer createModuleLayerWithMap(final String from,
+                                                 final String module) {
+        ModuleFinder finder = ModuleFinder.of(Paths.get(from));
+        ModuleLayer parent = ModuleLayer.boot();
+        Configuration cf = parent.configuration()
+                .resolve(finder, ModuleFinder.of(), Set.of(module));
+        return parent.defineModulesWithOneLoader(cf, ClassLoader.getSystemClassLoader());
+    }
+
 
     /**
      * Sets up the game options.
@@ -189,7 +208,7 @@ public class Game extends Application {
      */
     private void callBackgroundService(final GameData gameData,
                                        final GraphicsContext graphicsContext) {
-        Optional<Map> renderer = ServiceLoader.load(Map.class).findFirst();
+        Optional<Map> renderer = ServiceLoader.load(mapLayer, Map.class).findFirst();
 
         renderer.ifPresent(map -> {
             map.renderBg(

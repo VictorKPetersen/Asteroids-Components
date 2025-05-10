@@ -29,4 +29,4 @@ dk.sdu.vkp.player.components
 module:SplitterAsteroid
 dk.sdu.vkp.splitterasteroid
 module:StarFieldMap
-dk.sdu.vkp.starmap
+dk.sdu.vkp.map
