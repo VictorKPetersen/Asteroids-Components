@@ -55,12 +55,10 @@
                 <configuration>
                     <executable>java</executable>
                     <workingDirectory>../</workingDirectory>
-                    <longModulepath>false</longModulepath>
                     <arguments>
-                        <argument>--module-path</argument>
-                        <argument>mods-mvn</argument>
-                        <argument>--module</argument>
-                        <argument>GameEngine/dk.sdu.vkp.main.Launcher</argument>
+                        <argument>-cp</argument>
+                        <argument>mods-mvn/*</argument>
+                        <argument>dk.sdu.vkp.main.Launcher</argument>
                     </arguments>
                 </configuration>
             </plugin>
