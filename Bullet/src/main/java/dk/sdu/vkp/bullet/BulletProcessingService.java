@@ -6,14 +6,15 @@ import dk.sdu.vkp.common.services.ProcessingService;
 
 public class BulletProcessingService implements ProcessingService {
     @Override
-    public void process(GameData gameData) {
+    public void process(final GameData gameData) {
         for (Bullet bullet : gameData.getEntities().getEntities(Bullet.class)) {
             bullet.getMovementComponent().moveForward(bullet.getPosition());
             checkBounds(bullet, gameData);
         }
     }
 
-    private void checkBounds(Bullet bullet, GameData gameData) {
+    private void checkBounds(final Bullet bullet,
+                             final GameData gameData) {
         PositionComponent position = bullet.getPosition();
         double x = position.getX();
         double y = position.getY();

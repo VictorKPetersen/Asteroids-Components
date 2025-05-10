@@ -17,8 +17,10 @@ public class PlayerInputComponent implements InputComponent {
     /**
      * Creates a PlayerInputComponent with the specified MovementComponent.
      * @param movement  The {@link MovementComponent} to be used for player movement.
+     * @param weapon The non-null {@link WeaponComponent} to be used for attacking.
      */
-    public PlayerInputComponent(final MovementComponent movement, WeaponComponent weapon) {
+    public PlayerInputComponent(final MovementComponent movement,
+                                final WeaponComponent weapon) {
         this.movement = movement;
         this.weapon = weapon;
     }

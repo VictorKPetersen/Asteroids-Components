@@ -26,7 +26,9 @@ public class BulletShipPluginStarterService implements PluginStarterService {
         gameData.getEntities().addEntity(createBulletShiop(1020, 380, 75));
     }
 
-    private BulletShip createBulletShiop(double spawnX, double spawnY, double spawnRotation) {
+    private BulletShip createBulletShiop(final double spawnX,
+                                         final double spawnY,
+                                         final double spawnRotation) {
         double shipSize = 25;
         PositionComponent position = new BasicPositionComponent(spawnX, spawnY, spawnRotation);
         DrawingComponent drawingComponent = new TriangleDrawingComponent(Color.RED);

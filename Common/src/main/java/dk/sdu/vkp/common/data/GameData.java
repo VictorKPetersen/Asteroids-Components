@@ -39,6 +39,9 @@ public class GameData {
         return gameScore;
     }
 
+    /**
+     * Increments the game score by 1.
+     */
     public void increamentGameScore() {
         ++gameScore;
     }

@@ -1,6 +1,5 @@
 package dk.sdu.vkp.bulletship;
 
-import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.data.GameData;
 import dk.sdu.vkp.common.enemy.components.interfaces.AIControllerComponent;
@@ -8,7 +7,7 @@ import dk.sdu.vkp.common.services.ProcessingService;
 
 public class BulletShipProcessingService implements ProcessingService {
     @Override
-    public void process(GameData gameData) {
+    public void process(final GameData gameData) {
         for (BulletShip bulletShip : gameData.getEntities().getEntities(BulletShip.class)) {
             AIControllerComponent ai = bulletShip.getAiControllerComponent();
 

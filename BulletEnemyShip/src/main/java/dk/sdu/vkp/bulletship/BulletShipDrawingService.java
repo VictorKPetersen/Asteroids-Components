@@ -6,7 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class BulletShipDrawingService implements DrawingService {
     @Override
-    public void draw(GraphicsContext graphicsContext, GameData gameData) {
+    public void draw(final GraphicsContext graphicsContext,
+                     final GameData gameData) {
         for (BulletShip bulletShip : gameData.getEntities().getEntities(BulletShip.class)) {
             bulletShip.getDrawingComponent().render(graphicsContext, bulletShip);
         }

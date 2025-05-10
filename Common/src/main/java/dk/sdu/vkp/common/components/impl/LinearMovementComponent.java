@@ -2,7 +2,6 @@ package dk.sdu.vkp.common.components.impl;
 
 import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
-import dk.sdu.vkp.common.data.Entity;
 
 public class LinearMovementComponent implements MovementComponent {
     private final double speed;

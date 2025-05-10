@@ -17,6 +17,7 @@ public class Projectile extends Entity {
      *                         that defines the position and rotation of the entity.
      * @param drawingComponent The {@link DrawingComponent}
      *                         responsible for rendering the entity.
+     * @param movementComponent The {@link MovementComponent} to use for moving.
      *
      * @param hitbox The {@link HitboxComponent} used for collision detection.
      */

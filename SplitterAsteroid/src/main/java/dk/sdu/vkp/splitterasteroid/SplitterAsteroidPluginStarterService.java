@@ -17,15 +17,16 @@ import java.util.Random;
 public class SplitterAsteroidPluginStarterService implements PluginStarterService {
     private final Random random = new Random();
     @Override
-    public void start(GameData gameData) {
+    public void start(final GameData gameData) {
         gameData.getEntities().addEntity(createSplitter(gameData));
     }
 
     /**
      * Creates a new SplitterAsteroid instance with random values.
+     * @param gameData The non-null instance of {@link GameData} where new entites can be added.
      * @return A new SplitterAsteroid instance with random values.
      */
-    public SplitterAsteroid createSplitter(GameData gameData) {
+    public SplitterAsteroid createSplitter(final GameData gameData) {
         double asteroidRadius = random.nextDouble(30, 50);
         int asteroidLayers = random.nextInt(1, 3) + 1;
         double spawnX = random.nextDouble(gameData.getWindowWidth());
@@ -34,7 +35,8 @@ public class SplitterAsteroidPluginStarterService implements PluginStarterServic
         PositionComponent pos = new BasicPositionComponent(spawnX, spawnY, spawnRotation);
         DrawingComponent draw = new CircleDrawingComponent(SplitterAsteroid.getColor());
         HitboxComponent hitbox = new CircularHitboxComponent(asteroidRadius * asteroidLayers);
-        MovementComponent movement = new LinearMovementComponent(SplitterAsteroid.getSpeed(), SplitterAsteroid.getRotationSpeed());
+        MovementComponent movement =
+                new LinearMovementComponent(SplitterAsteroid.getSpeed(), SplitterAsteroid.getRotationSpeed());
 
         return new SplitterAsteroid(
                 pos, draw, hitbox, movement, asteroidRadius, asteroidLayers

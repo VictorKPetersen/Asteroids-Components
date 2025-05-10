@@ -7,7 +7,9 @@ import javafx.scene.image.Image;
 public class StarFieldMap implements Map {
     private static final Image BACKGROUND_IMAGE = new Image("StarField.png");
     @Override
-    public void renderBg(GraphicsContext gc, double width, double height) {
+    public void renderBg(final GraphicsContext gc,
+                         final double width,
+                         final double height) {
         gc.drawImage(BACKGROUND_IMAGE, 0, 0, width, height);
     }
 }

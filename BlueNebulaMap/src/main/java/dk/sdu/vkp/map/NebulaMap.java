@@ -9,7 +9,9 @@ public class NebulaMap implements Map {
             new Image("BlueNebulaBackground.png");
 
     @Override
-    public void renderBg(GraphicsContext gc, double width, double height) {
+    public void renderBg(final GraphicsContext gc,
+                         final double width,
+                         final double height) {
         gc.drawImage(BACKGROUND_IMAGE, 0, 0, width, height);
     }
 }

@@ -9,12 +9,17 @@ import javafx.scene.paint.Color;
 public class CircleDrawingComponent implements DrawingComponent {
     private final Color color;
 
-    public CircleDrawingComponent(Color color) {
+    /**
+     * Constructs the drawing component with a given color.
+     * @param color The color which the drawing should take.
+     */
+    public CircleDrawingComponent(final Color color) {
         this.color = color;
     }
 
     @Override
-    public void render(GraphicsContext graphicsContext, Entity entity) {
+    public void render(final GraphicsContext graphicsContext,
+                       final Entity entity) {
         PositionComponent position = entity.getPosition();
         double size = entity.getSize();
 

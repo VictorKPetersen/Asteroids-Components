@@ -30,7 +30,7 @@ public abstract class Asteroid extends Entity {
     }
 
     @Override
-    public void takeHit(GameData gameData) {
+    public void takeHit(final GameData gameData) {
         gameData.increamentGameScore();
         super.takeHit(gameData);
     }

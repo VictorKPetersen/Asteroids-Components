@@ -16,11 +16,15 @@ import javafx.scene.paint.Color;
 public class BulletWeaponComponent implements WeaponComponent {
     private final Projectile projectile;
 
+    /**
+     * Constructor for the weapon component.
+     * Creates the template for the bullet it will fire.
+     */
     public BulletWeaponComponent() {
         this.projectile = createProjectile(new BasicPositionComponent(0, 0, 0));
     }
     @Override
-    public void fire(GameData gameData, PositionComponent spawnPosition) {
+    public void fire(final GameData gameData, final PositionComponent spawnPosition) {
         gameData.getEntities().addEntity(createProjectile(spawnPosition));
     }
 
@@ -34,12 +38,13 @@ public class BulletWeaponComponent implements WeaponComponent {
         return projectile.getSize() * 2 + 5;
     }
 
-    private Projectile createProjectile(PositionComponent spawnPosition) {
+    private Projectile createProjectile(final PositionComponent spawnPosition) {
         double bulletRadius = 15;
         double bulletSpeed = 15;
         double bulletRotationSpeed = 10;
 
-        PositionComponent positionComponent = new BasicPositionComponent(spawnPosition.getX(), spawnPosition.getY(), spawnPosition.getRotation());
+        PositionComponent positionComponent =
+                new BasicPositionComponent(spawnPosition.getX(), spawnPosition.getY(), spawnPosition.getRotation());
         DrawingComponent drawingComponent = new CircleDrawingComponent(Color.MAROON);
         MovementComponent movementComponent = new LinearMovementComponent(bulletSpeed, bulletRotationSpeed);
         HitboxComponent hitboxComponent = new CircularHitboxComponent(bulletRadius);

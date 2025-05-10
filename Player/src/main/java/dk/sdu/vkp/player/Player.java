@@ -17,6 +17,7 @@ public class Player extends Entity {
     /**
      * Creates a Player entity with the specified position, drawing, and input components.
      *
+     * @param size The size of the player.
      * @param position The PositionComponent defining the player's position and rotation in the game world.
      * @param drawingComponent The DrawingComponent responsible for rendering the player entity.
      * @param playerInputComponent The PlayerInputComponent managing the player's input and movement logic.
@@ -39,7 +40,7 @@ public class Player extends Entity {
     }
 
     @Override
-    public void takeHit(GameData gameData) {
+    public void takeHit(final GameData gameData) {
         gameData.getEntities().clearEntities();
     }
 

@@ -32,11 +32,12 @@ public class SplitterAsteroid extends Asteroid {
      *                          responsible for rendering the entity.
      * @param hitbox            The {@link HitboxComponent} used for collision detection.
      * @param movementComponent The {@link MovementComponent} used for moving the entity.
+     * @param layers            A number > 0 representing the number of hits the asteroid can take.
      */
     public SplitterAsteroid(final PositionComponent position,
                             final DrawingComponent drawingComponent,
                             final HitboxComponent hitbox,
-                            final MovementComponent movementComponent, double baseRadius,
+                            final MovementComponent movementComponent, final double baseRadius,
                             final int layers) {
         super((baseRadius * layers), position, drawingComponent, hitbox, movementComponent);
         this.baseRadius = baseRadius;
@@ -44,7 +45,7 @@ public class SplitterAsteroid extends Asteroid {
     }
 
     @Override
-    public void takeHit(GameData gameData) {
+    public void takeHit(final GameData gameData) {
         super.takeHit(gameData);
         if (layers > 1) {
             for (int i = 0; i < 2; i++) {

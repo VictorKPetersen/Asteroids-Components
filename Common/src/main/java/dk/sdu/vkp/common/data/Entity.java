@@ -22,8 +22,9 @@ public class Entity {
      * @param drawingComponent The {@link DrawingComponent}
      *                        responsible for rendering the entity.
      * @param hitbox The {@link HitboxComponent} used for collision detection.
+     * @param size The size of the entity.
      */
-    public Entity(double size, final PositionComponent position,
+    public Entity(final double size, final PositionComponent position,
                   final DrawingComponent drawingComponent, final HitboxComponent hitbox) {
         this.size = size;
         this.position = position;

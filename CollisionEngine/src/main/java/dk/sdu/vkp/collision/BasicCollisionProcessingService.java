@@ -7,6 +7,11 @@ import dk.sdu.vkp.common.data.GameData;
 import dk.sdu.vkp.common.data.GameEntities;
 import dk.sdu.vkp.common.services.CollisionProcessingService;
 
+/**
+ * A simple implementation of collision.
+ * Does not check collision between asteroids,
+ * and is based upon the hitboxes being circular.
+ */
 public class BasicCollisionProcessingService implements CollisionProcessingService {
     @Override
     public void processCollisions(final GameData gameData) {
@@ -30,7 +35,16 @@ public class BasicCollisionProcessingService implements CollisionProcessingServi
     }
 
 
-    public boolean isColliding(Entity a, Entity b) {
+    /**
+     * Checks if two entities are colliding.
+     * All entities must have a valid
+     * {@link dk.sdu.vkp.common.components.interfaces.HitboxComponent}.
+     * @param a A non-null instance of {@link Entity}.
+     * @param b A non-null instance of {@link Entity}.
+     * @return True, if the entities are colliding, else false.
+     */
+    public boolean isColliding(final Entity a,
+                               final Entity b) {
         PositionComponent posA = a.getPosition();
         PositionComponent posB = b.getPosition();
 

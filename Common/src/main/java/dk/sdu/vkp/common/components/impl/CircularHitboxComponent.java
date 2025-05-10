@@ -7,12 +7,17 @@ import dk.sdu.vkp.common.data.GameData;
 public class CircularHitboxComponent implements HitboxComponent {
     private final double radius;
 
-    public CircularHitboxComponent(double radius) {
+    /**
+     * Creates a circular hitbox with the specified radius.
+     *
+     * @param radius The radius of the circular hitbox.
+     */
+    public CircularHitboxComponent(final double radius) {
         this.radius = radius;
     }
 
     @Override
-    public double getHitboxRadius(Entity entity) {
+    public double getHitboxRadius(final Entity entity) {
         return radius;
     }
 

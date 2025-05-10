@@ -6,6 +6,7 @@ import dk.sdu.vkp.common.data.GameData;
 public interface HitboxComponent {
     /**
      * Gets the radius of the hitbox.
+     * @param entity the entity which hitbox should be looked at.
      * @return the radius of the hitbox as a double.
      */
     double getHitboxRadius(Entity entity);

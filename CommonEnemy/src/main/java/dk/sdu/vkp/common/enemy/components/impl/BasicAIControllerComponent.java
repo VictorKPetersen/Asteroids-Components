@@ -12,12 +12,17 @@ public class BasicAIControllerComponent implements AIControllerComponent {
     private double targetAngle;
     private float timeUntilChange;
 
+    /**
+     * Construct a new controller component.
+     * Randomly sets the start direction.
+     */
     public BasicAIControllerComponent() {
         randomizeDirection();
     }
 
     @Override
-    public void update(Enemy enemy, GameData gameData) {
+    public void update(final Enemy enemy,
+                       final GameData gameData) {
         timeUntilChange -= 1000/60000f; // Simplify Delta Time as we are not interested in that.
         if (timeUntilChange <= 0) {
             randomizeDirection();
@@ -42,7 +47,7 @@ public class BasicAIControllerComponent implements AIControllerComponent {
         }
     }
 
-    private void attack(Enemy enemy, GameData gameData) {
+    private void attack(final Enemy enemy, final GameData gameData) {
         WeaponComponent weapon = enemy.getWeaponComponent();
         if (weapon != null) {
             PositionComponent pos = enemy.getPosition();
