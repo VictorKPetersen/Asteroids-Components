@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/BlueNebulaMap/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/BlueNebulaMap/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Bullet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Bullet/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/BulletEnemyShip/src/main/java" charset="UTF-8" />
@@ -25,10 +23,12 @@
     <file url="file://$PROJECT_DIR$/GameEngine/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RedHueMap/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RedHueMap/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SplitterAsteroid/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SplitterAsteroid/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/StarFieldMap/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/StarFieldMap/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/StaticMap/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/StaticMap/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

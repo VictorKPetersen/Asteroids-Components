@@ -16,6 +16,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -192,8 +193,10 @@ public class Game extends Application {
         Optional<Map> renderer = ServiceLoader.load(Map.class).findFirst();
 
         renderer.ifPresent(map -> {
+            Image image = new Image("BlueNebulaBackground.png");
             map.renderBg(
                     graphicsContext,
+                    image,
                     gameData.getWindowWidth(),
                     gameData.getWindowHeight()
             );
