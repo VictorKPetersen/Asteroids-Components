@@ -1,6 +1,6 @@
 import dk.sdu.vkp.common.map.Map;
 
-module BlueNebulaMap {
+module StaticMap {
     requires javafx.graphics;
     requires CommonMap;
 

@@ -19,8 +19,8 @@
       <module>CommonAsteroid</module>
     <module>SplitterAsteroid</module>
       <module>CommonMap</module>
-    <module>BlueNebulaMap</module>
-    <module>StarFieldMap</module>
+    <module>StaticMap</module>
+    <module>RedHueMap</module>
   </modules>
 
   <properties>
