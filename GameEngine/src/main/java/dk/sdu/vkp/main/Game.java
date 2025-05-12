@@ -29,8 +29,10 @@ import java.util.ServiceLoader;
 public class Game extends Application {
     private final static int WINDOW_WIDTH = 1920;
     private final static int WINDOW_HEIGHT = 1080;
+    private Image image;
     @Override
     public void start(final Stage stage) {
+        image = new Image("BlueNebulaBackground.png");
         GameData gameData = new GameData(
                 new GameKeys(),
                 new GameEntities()
@@ -193,7 +195,6 @@ public class Game extends Application {
         Optional<Map> renderer = ServiceLoader.load(Map.class).findFirst();
 
         renderer.ifPresent(map -> {
-            Image image = new Image("BlueNebulaBackground.png");
             map.renderBg(
                     graphicsContext,
                     image,
