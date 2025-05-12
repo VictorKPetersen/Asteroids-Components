@@ -34,10 +34,12 @@ public class Game extends Application {
     private final static int WINDOW_WIDTH = 1920;
     private final static int WINDOW_HEIGHT = 1080;
     private ModuleLayer mapLayer;
+    private Image image;
 
     @Override
     public void start(final Stage stage) {
         mapLayer = createModuleLayerWithMap("plugins", "RedHueMap");
+        image = new Image("BlueNebulaBackground.png");
         GameData gameData = new GameData(
                 new GameKeys(),
                 new GameEntities()
@@ -212,7 +214,6 @@ public class Game extends Application {
         Optional<Map> renderer = ServiceLoader.load(mapLayer, Map.class).findFirst();
 
         renderer.ifPresent(map -> {
-            Image image = new Image("BlueNebulaBackground.png");
             map.renderBg(
                     graphicsContext,
                     image,
