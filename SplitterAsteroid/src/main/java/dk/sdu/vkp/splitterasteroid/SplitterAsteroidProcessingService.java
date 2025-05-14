@@ -19,6 +19,14 @@ public class SplitterAsteroidProcessingService implements ProcessingService {
                    new SplitterAsteroidPluginStarterService();
            gameData.getEntities().addEntity(starter.createSplitter(gameData));
         }
+
+        /*
+        Spring specific change, since I fundamentally changed how loading the services works.
+        In spring, I only load the services once, before I loaded them each frame.
+        With this change context I contained between frames, as the instance is the same.
+        Therefore, we reset the count to 0 every frame.
+         */
+        count = 0;
     }
     
     private void checkBounds(final GameData gameData, final SplitterAsteroid splitter) {

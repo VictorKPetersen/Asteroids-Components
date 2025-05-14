@@ -10,9 +10,6 @@ import dk.sdu.vkp.common.services.PluginStarterService;
 import dk.sdu.vkp.common.services.ProcessingService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -23,18 +20,29 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.ServiceLoader;
 
-public class Game extends Application {
+public class Game {
     private final static int WINDOW_WIDTH = 1920;
     private final static int WINDOW_HEIGHT = 1080;
-    @Override
+    private Image image;
+
+    private List<PluginStarterService> pluginStarterServices;
+    private List<ProcessingService> processingServices;
+    private List<DrawingService> drawingServices;
+    private CollisionProcessingService collisionProcessingService;
+    private Map mapService;
+
     public void start(final Stage stage) {
+        image = new Image("BlueNebulaBackground.png");
+
         GameData gameData = new GameData(
                 new GameKeys(),
                 new GameEntities()
         );
+
         setupOptions(gameData, stage);
 
         Pane pane = new Pane();
@@ -69,12 +77,8 @@ public class Game extends Application {
      * @param gameKeys The {@link GameKeys} which handles key events.
      */
     private void setupKeyHandlers(final Scene scene, final GameKeys gameKeys) {
-        scene.setOnKeyPressed(event -> {
-            gameKeys.addActiveKey(event.getCode());
-        });
-        scene.setOnKeyReleased(event -> {
-            gameKeys.removeActiveKey(event.getCode());
-        });
+        scene.setOnKeyPressed(event -> gameKeys.addActiveKey(event.getCode()));
+        scene.setOnKeyReleased(event -> gameKeys.removeActiveKey(event.getCode()));
     }
 
     /**
@@ -96,12 +100,9 @@ public class Game extends Application {
 
         KeyFrame keyFrame = new KeyFrame(
                 Duration.millis(1000 / 60f),
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(final ActionEvent actionEvent) {
-                        update(gameData);
-                        draw(gameData, graphicsContext);
-                    }
+                actionEvent -> {
+                    update(gameData);
+                    draw(gameData, graphicsContext);
                 }
         );
 
@@ -111,13 +112,11 @@ public class Game extends Application {
 
     /**
      * Starts all the plugin services.
-     * Loads the services using the {@link ServiceLoader}.
      * @param gameData  The {@link GameData} to act upon.
      */
     private void startPluginServices(final GameData gameData) {
-        for (PluginStarterService pluginStarterService
-                : ServiceLoader.load(PluginStarterService.class)) {
-            pluginStarterService.start(gameData);
+        for (PluginStarterService plugin : pluginStarterServices) {
+            plugin.start(gameData);
         }
     }
 
@@ -137,14 +136,12 @@ public class Game extends Application {
      * @param gameData  The {@link GameData} which contains entity information.
      */
     private void callProcessingServices(final GameData gameData) {
-        for (ProcessingService processingService
-                : ServiceLoader.load(ProcessingService.class)) {
+        for (ProcessingService processingService : processingServices) {
             processingService.process(gameData);
         }
 
-        for (CollisionProcessingService collisionService
-                : ServiceLoader.load(CollisionProcessingService.class)) {
-            collisionService.processCollisions(gameData);
+        if (collisionProcessingService != null) {
+            collisionProcessingService.processCollisions(gameData);
         }
     }
 
@@ -167,39 +164,49 @@ public class Game extends Application {
 
     /**
      * Calls all the processing services.
+     * Also calls the draw for the map, if it is not null.
      * @param graphicsContext The {@link GraphicsContext}
      *                       which is used for rendering.
      * @param gameData The {@link GameData} used as common data point.
      */
     private void callDrawingServices(final GameData gameData,
                                      final GraphicsContext graphicsContext) {
-        callBackgroundService(gameData, graphicsContext);
-
-        for (DrawingService drawingService
-                : ServiceLoader.load(DrawingService.class)) {
-            drawingService.draw(graphicsContext, gameData);
-        }
-    }
-
-    /**
-     * Calls a singular {@link Map} service.
-     * If none are found, none are called.
-     * Should be called before any other drawing is done for the frame.
-     * @param gameData  The gamedata which decides the size of the canvas.
-     * @param graphicsContext The context to draw the background on.
-     */
-    private void callBackgroundService(final GameData gameData,
-                                       final GraphicsContext graphicsContext) {
-        Optional<Map> renderer = ServiceLoader.load(Map.class).findFirst();
-
-        renderer.ifPresent(map -> {
-            Image image = new Image("BlueNebulaBackground.png");
-            map.renderBg(
+        if (mapService != null) {
+            mapService.renderBg(
                     graphicsContext,
                     image,
                     gameData.getWindowWidth(),
                     gameData.getWindowHeight()
             );
-        });
+        }
+
+        for (DrawingService drawingService : drawingServices) {
+            drawingService.draw(graphicsContext, gameData);
+        }
+    }
+
+    public void setPluginStarterServices(
+            final List<PluginStarterService> pluginStarterServices) {
+        this.pluginStarterServices = pluginStarterServices;
+    }
+
+    public void setProcessingServices(
+            final List<ProcessingService> processingServices) {
+        this.processingServices = processingServices;
+    }
+
+    public void setDrawingServices(
+            final List<DrawingService> drawingServices) {
+        this.drawingServices = drawingServices;
+    }
+
+    public void setCollisionProcessingService(
+            final CollisionProcessingService collisionProcessingService) {
+        this.collisionProcessingService = collisionProcessingService;
+    }
+
+    public void setMapService(
+            final Map mapService) {
+        this.mapService = mapService;
     }
 }
