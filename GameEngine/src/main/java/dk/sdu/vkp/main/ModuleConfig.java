@@ -8,6 +8,7 @@ import dk.sdu.vkp.common.services.ProcessingService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.Nullable;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.ServiceLoader;
@@ -27,6 +28,8 @@ public class ModuleConfig {
 
         game.setCollisionProcessingService(collisionProcessingService());
         game.setMapService(mapService());
+
+        game.setRestTemplate(restTemplate());
 
         return game;
     }
@@ -73,5 +76,10 @@ public class ModuleConfig {
                 .map(ServiceLoader.Provider::get)
                 .findFirst()
                 .orElse(null);
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

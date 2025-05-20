@@ -19,10 +19,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.ServiceLoader;
 
 public class Game {
     private final static int WINDOW_WIDTH = 1920;
@@ -34,6 +33,7 @@ public class Game {
     private List<DrawingService> drawingServices;
     private CollisionProcessingService collisionProcessingService;
     private Map mapService;
+    private RestTemplate restTemplate;
 
     public void start(final Stage stage) {
         image = new Image("BlueNebulaBackground.png");
@@ -159,7 +159,20 @@ public class Game {
 
         graphicsContext.setFill(Color.GOLD); // or whatever color works
         graphicsContext.setFont(new Font("Arial", 24));
-        graphicsContext.fillText("Score: " + gameData.getGameScore(), 20, 40);
+        graphicsContext.fillText("Score: " +
+                getScoreFromMicroService("http://localhost:8080/retrieve"),
+                20, 40);
+    }
+
+    private int getScoreFromMicroService(String url) {
+        try {
+            String resp = restTemplate.getForObject(url, String.class);
+            return Integer.parseInt(resp);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     /**
@@ -208,5 +221,9 @@ public class Game {
     public void setMapService(
             final Map mapService) {
         this.mapService = mapService;
+    }
+
+    public void setRestTemplate(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
 }

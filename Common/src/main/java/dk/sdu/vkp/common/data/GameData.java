@@ -4,8 +4,6 @@ public class GameData {
     private int windowWidth;
     private int windowHeight;
 
-    private int gameScore;
-
     private final GameKeys keys;
     private final GameEntities entities;
 
@@ -35,16 +33,6 @@ public class GameData {
         this.windowHeight = windowHeight;
     }
 
-    public int getGameScore() {
-        return gameScore;
-    }
-
-    /**
-     * Increments the game score by 1.
-     */
-    public void increamentGameScore() {
-        ++gameScore;
-    }
 
     public GameKeys getKeys() {
         return keys;

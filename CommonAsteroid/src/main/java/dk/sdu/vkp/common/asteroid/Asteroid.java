@@ -6,10 +6,11 @@ import dk.sdu.vkp.common.components.interfaces.MovementComponent;
 import dk.sdu.vkp.common.components.interfaces.PositionComponent;
 import dk.sdu.vkp.common.data.Entity;
 import dk.sdu.vkp.common.data.GameData;
+import org.springframework.web.client.RestTemplate;
 
 public abstract class Asteroid extends Entity {
     private final MovementComponent movementComponent;
-
+    private static final RestTemplate REST_TEMPLATE = new RestTemplate();
     /**
      * Constructs a new Entity instance with
      * the specified position and drawing components.
@@ -31,8 +32,17 @@ public abstract class Asteroid extends Entity {
 
     @Override
     public void takeHit(final GameData gameData) {
-        gameData.increamentGameScore();
+        increaseScore("http://localhost:8080/increase?score=1");
         super.takeHit(gameData);
+    }
+
+    private void increaseScore(String url) {
+        try {
+            REST_TEMPLATE.getForObject(url, String.class);
+        } catch (Exception e) {
+            System.out.println("Failed to increase score");
+            e.printStackTrace();
+        }
     }
 
     public MovementComponent getMovementComponent() {
